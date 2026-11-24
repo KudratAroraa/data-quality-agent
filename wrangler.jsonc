@@ -1,0 +1,45 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "data-quality-agent",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Public URL on the free workers.dev subdomain. Preview URLs (an extra public
+  // URL for every uploaded version) are turned off to keep the attack surface small.
+  "workers_dev": true,
+  "preview_urls": false,
+
+  // The React build is served as static assets by the same Worker.
+  "assets": {
+    "not_found_handling": "single-page-application"
+  },
+
+  // Workers Logs: shows every request + console.log output in the dashboard.
+  // Free on the Workers Free plan. Screenshot this for Goal 2 evidence.
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+
+  "vars": {
+    // Claude Haiku 5.5: the cheapest current Claude model.
+    "CLAUDE_MODEL": "claude-haiku-5-5",
+    "MAX_ROWS": "2000",
+    // "true" runs the rule-based demo agent instead of Claude (no API cost).
+    "DEMO_MODE": "false"
+  },
+
+  // Security: each IP address can start at most 5 analyses per minute,
+  // so nobody can run up the Claude API bill. Free on the Workers Free plan.
+  "ratelimits": [
+    {
+      "name": "ANALYZE_LIMITER",
+      "namespace_id": "1001",
+      "simple": { "limit": 5, "period": 60 }
+    }
+  ]
+  // Secret (never commit it): ANTHROPIC_API_KEY
+  //   local:  put it in .dev.vars
+  //   prod:   npx wrangler secret put ANTHROPIC_API_KEY
+}

@@ -1,0 +1,56 @@
+{
+  "description": "Planted issues. 'count' is the number of affected rows the agent should report.",
+  "expected_issues": [
+    {
+      "column": "email",
+      "issue_type": "missing_values",
+      "count": 10
+    },
+    {
+      "column": "email",
+      "issue_type": "invalid_format",
+      "count": 8
+    },
+    {
+      "column": "phone",
+      "issue_type": "invalid_format",
+      "count": 6
+    },
+    {
+      "column": "state",
+      "issue_type": "inconsistent_values",
+      "count": 9
+    },
+    {
+      "column": "postcode",
+      "issue_type": "invalid_format",
+      "count": 4
+    },
+    {
+      "column": "signup_date",
+      "issue_type": "invalid_format",
+      "count": 5
+    },
+    {
+      "column": "lifetime_value",
+      "issue_type": "outliers",
+      "count": 3
+    },
+    {
+      "column": "status",
+      "issue_type": "inconsistent_values",
+      "count": 5
+    },
+    {
+      "column": "last_name",
+      "issue_type": "missing_values",
+      "count": 3
+    },
+    {
+      "column": "*",
+      "issue_type": "duplicates",
+      "count": 10,
+      "note": "6 exact copies + 4 near-duplicates (same email, different case and ID)"
+    }
+  ]
+}
