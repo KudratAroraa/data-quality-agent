@@ -1,0 +1,886 @@
+[
+  {
+    "file": "clean_customers",
+    "run": 1,
+    "model": "claude-haiku-5-5",
+    "recall": 1,
+    "found": "0/0",
+    "exact_counts": "0/0",
+    "unexpected_issues": 0,
+    "false_positives": 0,
+    "score": 100,
+    "turns": 3,
+    "tokens": 12968,
+    "cost_usd": 0.0016,
+    "seconds": 4.3,
+    "missed": "-",
+    "unexpected": [],
+    "report": {
+      "overall_score": 100,
+      "summary": "The customer dataset (60 rows) is very clean. No missing values, no duplicate emails (including case/whitespace-normalised matches), no duplicate name+phone combinations, and all emails, AU phone numbers, postcodes and signup dates pass format checks. State and status use consistent categories, and neither lifetime_value nor postcode has IQR outliers. No migration-blocking issues were found.",
+      "issues": []
+    },
+    "trace": [
+      {
+        "tool": "find_duplicates",
+        "input": {
+          "columns": [
+            "email"
+          ],
+          "normalise": true
+        },
+        "result_preview": "{\"columns_checked\":[\"email\"],\"normalised\":true,\"duplicate_groups\":0,\"extra_rows\":0,\"example_groups\":[]}"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "email",
+          "format": "email"
+        },
+        "result_preview": "{\"column\":\"email\",\"format\":\"email\",\"checked_non_empty\":60,\"invalid_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "phone",
+          "format": "phone_au"
+        },
+        "result_preview": "{\"column\":\"phone\",\"format\":\"phone_au\",\"checked_non_empty\":60,\"invalid_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "postcode",
+          "format": "postcode_au"
+        },
+        "result_preview": "{\"column\":\"postcode\",\"format\":\"postcode_au\",\"checked_non_empty\":60,\"invalid_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "signup_date",
+          "format": "date"
+        },
+        "result_preview": "{\"column\":\"signup_date\",\"format\":\"date\",\"checked_non_empty\":60,\"invalid_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "find_inconsistent_values",
+        "input": {
+          "column": "state"
+        },
+        "result_preview": "{\"column\":\"state\",\"distinct_values\":5,\"inconsistent_groups\":0,\"affected_rows\":0,\"groups\":[]}"
+      },
+      {
+        "tool": "find_inconsistent_values",
+        "input": {
+          "column": "status"
+        },
+        "result_preview": "{\"column\":\"status\",\"distinct_values\":2,\"inconsistent_groups\":0,\"affected_rows\":0,\"groups\":[]}"
+      },
+      {
+        "tool": "find_outliers",
+        "input": {
+          "column": "lifetime_value"
+        },
+        "result_preview": "{\"column\":\"lifetime_value\",\"numeric_values\":60,\"non_numeric\":0,\"median\":2478.41,\"bounds\":{\"low\":-2489.7612499999996,\"high\":7614.96875},\"outlier_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "find_duplicates",
+        "input": {
+          "columns": [
+            "first_name",
+            "last_name",
+            "phone"
+          ],
+          "normalise": true
+        },
+        "result_preview": "{\"columns_checked\":[\"first_name\",\"last_name\",\"phone\"],\"normalised\":true,\"duplicate_groups\":0,\"extra_rows\":0,\"example_groups\":[]}"
+      },
+      {
+        "tool": "find_outliers",
+        "input": {
+          "column": "postcode"
+        },
+        "result_preview": "{\"column\":\"postcode\",\"numeric_values\":60,\"non_numeric\":0,\"median\":4506,\"bounds\":{\"low\":-40.625,\"high\":9124.375},\"outlier_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "submit_report",
+        "input": "(final report)",
+        "result_preview": "done"
+      }
+    ]
+  },
+  {
+    "file": "clean_customers",
+    "run": 2,
+    "model": "claude-haiku-5-5",
+    "recall": 1,
+    "found": "0/0",
+    "exact_counts": "0/0",
+    "unexpected_issues": 0,
+    "false_positives": 0,
+    "score": 100,
+    "turns": 3,
+    "tokens": 12946,
+    "cost_usd": 0.0016,
+    "seconds": 4.1,
+    "missed": "-",
+    "unexpected": [],
+    "report": {
+      "overall_score": 100,
+      "summary": "The customer dataset (60 rows) is clean on every check run. Emails are unique even after case and whitespace normalisation, there are no missing values, and phone, postcode, date, state and status formats are all consistent. Lifetime value and postcode show no outliers and no duplicate name/phone combinations were found. No issues need fixing before migration.",
+      "issues": []
+    },
+    "trace": [
+      {
+        "tool": "find_duplicates",
+        "input": {
+          "columns": [
+            "email"
+          ],
+          "normalise": true
+        },
+        "result_preview": "{\"columns_checked\":[\"email\"],\"normalised\":true,\"duplicate_groups\":0,\"extra_rows\":0,\"example_groups\":[]}"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "email",
+          "format": "email"
+        },
+        "result_preview": "{\"column\":\"email\",\"format\":\"email\",\"checked_non_empty\":60,\"invalid_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "phone",
+          "format": "phone_au"
+        },
+        "result_preview": "{\"column\":\"phone\",\"format\":\"phone_au\",\"checked_non_empty\":60,\"invalid_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "postcode",
+          "format": "postcode_au"
+        },
+        "result_preview": "{\"column\":\"postcode\",\"format\":\"postcode_au\",\"checked_non_empty\":60,\"invalid_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "signup_date",
+          "format": "date"
+        },
+        "result_preview": "{\"column\":\"signup_date\",\"format\":\"date\",\"checked_non_empty\":60,\"invalid_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "find_inconsistent_values",
+        "input": {
+          "column": "state"
+        },
+        "result_preview": "{\"column\":\"state\",\"distinct_values\":5,\"inconsistent_groups\":0,\"affected_rows\":0,\"groups\":[]}"
+      },
+      {
+        "tool": "find_inconsistent_values",
+        "input": {
+          "column": "status"
+        },
+        "result_preview": "{\"column\":\"status\",\"distinct_values\":2,\"inconsistent_groups\":0,\"affected_rows\":0,\"groups\":[]}"
+      },
+      {
+        "tool": "find_outliers",
+        "input": {
+          "column": "lifetime_value"
+        },
+        "result_preview": "{\"column\":\"lifetime_value\",\"numeric_values\":60,\"non_numeric\":0,\"median\":2478.41,\"bounds\":{\"low\":-2489.7612499999996,\"high\":7614.96875},\"outlier_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "find_duplicates",
+        "input": {
+          "columns": [
+            "first_name",
+            "last_name",
+            "phone"
+          ],
+          "normalise": true
+        },
+        "result_preview": "{\"columns_checked\":[\"first_name\",\"last_name\",\"phone\"],\"normalised\":true,\"duplicate_groups\":0,\"extra_rows\":0,\"example_groups\":[]}"
+      },
+      {
+        "tool": "find_outliers",
+        "input": {
+          "column": "postcode"
+        },
+        "result_preview": "{\"column\":\"postcode\",\"numeric_values\":60,\"non_numeric\":0,\"median\":4506,\"bounds\":{\"low\":-40.625,\"high\":9124.375},\"outlier_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "submit_report",
+        "input": "(final report)",
+        "result_preview": "done"
+      }
+    ]
+  },
+  {
+    "file": "clean_customers",
+    "run": 3,
+    "model": "claude-haiku-5-5",
+    "recall": 1,
+    "found": "0/0",
+    "exact_counts": "0/0",
+    "unexpected_issues": 0,
+    "false_positives": 0,
+    "score": 100,
+    "turns": 3,
+    "tokens": 12889,
+    "cost_usd": 0.0016,
+    "seconds": 3.9,
+    "missed": "-",
+    "unexpected": [],
+    "report": {
+      "overall_score": 100,
+      "summary": "The customer dataset (60 rows) is clean on every check run. There are no missing values, no duplicate customer IDs or emails (including case-insensitive matches), and all emails, AU phone numbers, AU postcodes and signup dates are valid. State and status values are consistent, and neither lifetime_value nor postcode has outliers. No issues need fixing before migration.",
+      "issues": []
+    },
+    "trace": [
+      {
+        "tool": "find_duplicates",
+        "input": {
+          "columns": [
+            "email"
+          ],
+          "normalise": true
+        },
+        "result_preview": "{\"columns_checked\":[\"email\"],\"normalised\":true,\"duplicate_groups\":0,\"extra_rows\":0,\"example_groups\":[]}"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "email",
+          "format": "email"
+        },
+        "result_preview": "{\"column\":\"email\",\"format\":\"email\",\"checked_non_empty\":60,\"invalid_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "phone",
+          "format": "phone_au"
+        },
+        "result_preview": "{\"column\":\"phone\",\"format\":\"phone_au\",\"checked_non_empty\":60,\"invalid_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "postcode",
+          "format": "postcode_au"
+        },
+        "result_preview": "{\"column\":\"postcode\",\"format\":\"postcode_au\",\"checked_non_empty\":60,\"invalid_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "signup_date",
+          "format": "date"
+        },
+        "result_preview": "{\"column\":\"signup_date\",\"format\":\"date\",\"checked_non_empty\":60,\"invalid_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "find_inconsistent_values",
+        "input": {
+          "column": "state"
+        },
+        "result_preview": "{\"column\":\"state\",\"distinct_values\":5,\"inconsistent_groups\":0,\"affected_rows\":0,\"groups\":[]}"
+      },
+      {
+        "tool": "find_inconsistent_values",
+        "input": {
+          "column": "status"
+        },
+        "result_preview": "{\"column\":\"status\",\"distinct_values\":2,\"inconsistent_groups\":0,\"affected_rows\":0,\"groups\":[]}"
+      },
+      {
+        "tool": "find_outliers",
+        "input": {
+          "column": "lifetime_value"
+        },
+        "result_preview": "{\"column\":\"lifetime_value\",\"numeric_values\":60,\"non_numeric\":0,\"median\":2478.41,\"bounds\":{\"low\":-2489.7612499999996,\"high\":7614.96875},\"outlier_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "find_duplicates",
+        "input": {
+          "columns": [
+            "customer_id"
+          ]
+        },
+        "result_preview": "{\"columns_checked\":[\"customer_id\"],\"normalised\":false,\"duplicate_groups\":0,\"extra_rows\":0,\"example_groups\":[]}"
+      },
+      {
+        "tool": "find_outliers",
+        "input": {
+          "column": "postcode"
+        },
+        "result_preview": "{\"column\":\"postcode\",\"numeric_values\":60,\"non_numeric\":0,\"median\":4506,\"bounds\":{\"low\":-40.625,\"high\":9124.375},\"outlier_count\":0,\"examples\":[]}"
+      },
+      {
+        "tool": "submit_report",
+        "input": "(final report)",
+        "result_preview": "done"
+      }
+    ]
+  },
+  {
+    "file": "messy_customers",
+    "run": 1,
+    "model": "claude-haiku-5-5",
+    "recall": 1,
+    "found": "10/10",
+    "exact_counts": "10/10",
+    "unexpected_issues": 0,
+    "false_positives": 0,
+    "score": 62,
+    "turns": 2,
+    "tokens": 10566,
+    "cost_usd": 0.0019,
+    "seconds": 9,
+    "missed": "-",
+    "unexpected": [],
+    "report": {
+      "overall_score": 62,
+      "summary": "The dataset has 210 rows with significant issues that would block a migration: 10 duplicate customer records (case or exact-copy variants of the same email, with 6 repeated customer_ids), 8 invalid emails, and malformed postcodes, signup dates and phones. Status and state use inconsistent spellings, and three lifetime_value entries are extreme outliers (up to 999,999). Missing emails (10) and last names (3) also need a decision before go-live.",
+      "issues": [
+        {
+          "column": "email",
+          "issue_type": "duplicates",
+          "severity": "high",
+          "affected_rows": 10,
+          "example": "Rows 9 and 208, 26 and 203, 30 and 206 share the same email after normalisation. Rows 9/208 and 30/206 also share customer_id (6 repeated IDs), so these are duplicate customer records.",
+          "suggested_fix": "Review each duplicate group, merge the records (keep the most complete and most recent), and enforce uniqueness on normalised (lower-cased, trimmed) email and customer_id before loading to Salesforce."
+        },
+        {
+          "column": "email",
+          "issue_type": "invalid_format",
+          "severity": "high",
+          "affected_rows": 8,
+          "example": "Row 67 'l***@' (no domain); row 39 'j***@example' (no TLD); row 131 'o***@exa mple.com' (embedded space)",
+          "suggested_fix": "Correct the malformed addresses from source systems or flag them for customer re-confirmation; do not load invalid emails into the target."
+        },
+        {
+          "column": "email",
+          "issue_type": "missing_values",
+          "severity": "high",
+          "affected_rows": 10,
+          "example": "10 of 210 rows (4.8%) have no email",
+          "suggested_fix": "Confirm whether email is mandatory in the target. If so, source the missing addresses or quarantine these records. Missing emails also hinder duplicate matching."
+        },
+        {
+          "column": "postcode",
+          "issue_type": "invalid_format",
+          "severity": "high",
+          "affected_rows": 4,
+          "example": "Row 40 '300' (3 digits), row 53 '30OO' (letter O), row 108 'VIC3000' (state prefix), row 170 '30001' (5 digits)",
+          "suggested_fix": "Correct to 4-digit numeric Australian postcodes, using the state and address to verify. Store as text to preserve leading zeros."
+        },
+        {
+          "column": "signup_date",
+          "issue_type": "invalid_format",
+          "severity": "high",
+          "affected_rows": 5,
+          "example": "Row 8 '2024-02-30' (impossible date), row 27 '31/02/2025', row 34 'yesterday', row 58 '15-07-2025' (non-standard), row 125 '2025-13-01'",
+          "suggested_fix": "Parse the valid formats into ISO dates and set impossible or relative values to null for manual review. Do not guess the date."
+        },
+        {
+          "column": "phone",
+          "issue_type": "invalid_format",
+          "severity": "medium",
+          "affected_rows": 6,
+          "example": "Row 152 'ph*ne' (placeholder text), row 22 '18******RS', row 161 '12*45', row 201 '99******99'",
+          "suggested_fix": "Replace placeholder and malformed values with nulls, then re-collect valid Australian mobile or landline numbers."
+        },
+        {
+          "column": "lifetime_value",
+          "issue_type": "outliers",
+          "severity": "medium",
+          "affected_rows": 3,
+          "example": "Row 71 = 250000, row 79 = 180000, row 138 = 999999 against a median of 2414.56 and an upper IQR bound of about 7165",
+          "suggested_fix": "Verify these values against billing or finance records. They look like placeholder or test values and should be corrected or nulled before migration."
+        },
+        {
+          "column": "status",
+          "issue_type": "inconsistent_values",
+          "severity": "medium",
+          "affected_rows": 5,
+          "example": "'ACTIVE', 'active', 'active ' (trailing space) for active; 'INACTIVE', 'inactive' for inactive",
+          "suggested_fix": "Standardise to the picklist values 'Active' and 'Inactive', trimming whitespace, and map to the target's allowed values."
+        },
+        {
+          "column": "state",
+          "issue_type": "inconsistent_values",
+          "severity": "medium",
+          "affected_rows": 9,
+          "example": "'New South Wales' (3 rows) vs 'NSW' (38); 'Victoria' (4) and 'vic' (2) vs 'VIC' (40)",
+          "suggested_fix": "Map full names and case variants to standard two-letter codes (NSW, VIC) to match the target picklist."
+        },
+        {
+          "column": "last_name",
+          "issue_type": "missing_values",
+          "severity": "low",
+          "affected_rows": 3,
+          "example": "3 of 210 rows (1.4%) have no last_name",
+          "suggested_fix": "Check whether last_name is required in the target. If so, source the values or set a documented placeholder."
+        }
+      ]
+    },
+    "trace": [
+      {
+        "tool": "find_duplicates",
+        "input": {
+          "columns": [
+            "email"
+          ],
+          "normalise": true
+        },
+        "result_preview": "{\"columns_checked\":[\"email\"],\"normalised\":true,\"duplicate_groups\":10,\"extra_rows\":10,\"example_groups\":[[9,208],[26,203],[30,206],[32,209],[82,205]]}"
+      },
+      {
+        "tool": "find_duplicates",
+        "input": {
+          "columns": [
+            "customer_id"
+          ]
+        },
+        "result_preview": "{\"columns_checked\":[\"customer_id\"],\"normalised\":false,\"duplicate_groups\":6,\"extra_rows\":6,\"example_groups\":[[9,208],[30,206],[32,209],[93,210],[153,211]]}"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "email",
+          "format": "email"
+        },
+        "result_preview": "{\"column\":\"email\",\"format\":\"email\",\"checked_non_empty\":200,\"invalid_count\":8,\"examples\":[{\"row\":13,\"value\":\"a***@example.c\"},{\"row\":39,\"value\":\"j***@example\"},{\"row\":67,\"value\":\"l***@\"},{\"row\":84,\"val"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "postcode",
+          "format": "postcode_au"
+        },
+        "result_preview": "{\"column\":\"postcode\",\"format\":\"postcode_au\",\"checked_non_empty\":210,\"invalid_count\":4,\"examples\":[{\"row\":40,\"value\":\"300\"},{\"row\":53,\"value\":\"30OO\"},{\"row\":108,\"value\":\"VIC3000\"},{\"row\":170,\"value\":\"3"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "signup_date",
+          "format": "date"
+        },
+        "result_preview": "{\"column\":\"signup_date\",\"format\":\"date\",\"checked_non_empty\":210,\"invalid_count\":5,\"examples\":[{\"row\":8,\"value\":\"2024-02-30\"},{\"row\":27,\"value\":\"31/02/2025\"},{\"row\":34,\"value\":\"yesterday\"},{\"row\":58,\"v"
+      },
+      {
+        "tool": "find_inconsistent_values",
+        "input": {
+          "column": "status"
+        },
+        "result_preview": "{\"column\":\"status\",\"distinct_values\":7,\"inconsistent_groups\":2,\"affected_rows\":5,\"groups\":[{\"canonical\":\"active\",\"variants\":[{\"value\":\"Active\",\"count\":159},{\"value\":\"ACTIVE\",\"count\":1},{\"value\":\"activ"
+      },
+      {
+        "tool": "find_inconsistent_values",
+        "input": {
+          "column": "state"
+        },
+        "result_preview": "{\"column\":\"state\",\"distinct_values\":8,\"inconsistent_groups\":2,\"affected_rows\":9,\"groups\":[{\"canonical\":\"nsw\",\"variants\":[{\"value\":\"NSW\",\"count\":38},{\"value\":\"New South Wales\",\"count\":3}]},{\"canonical\""
+      },
+      {
+        "tool": "find_outliers",
+        "input": {
+          "column": "lifetime_value"
+        },
+        "result_preview": "{\"column\":\"lifetime_value\",\"numeric_values\":210,\"non_numeric\":0,\"median\":2414.56,\"bounds\":{\"low\":-2323.9462499999995,\"high\":7165.023749999999},\"outlier_count\":3,\"examples\":[{\"row\":71,\"value\":250000},{"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "phone",
+          "format": "phone_au"
+        },
+        "result_preview": "{\"column\":\"phone\",\"format\":\"phone_au\",\"checked_non_empty\":210,\"invalid_count\":6,\"examples\":[{\"row\":7,\"value\":\"04****45\"},{\"row\":22,\"value\":\"18******RS\"},{\"row\":152,\"value\":\"ph*ne\"},{\"row\":161,\"value\":"
+      },
+      {
+        "tool": "submit_report",
+        "input": "(final report)",
+        "result_preview": "done"
+      }
+    ]
+  },
+  {
+    "file": "messy_customers",
+    "run": 2,
+    "model": "claude-haiku-5-5",
+    "recall": 1,
+    "found": "10/10",
+    "exact_counts": "10/10",
+    "unexpected_issues": 0,
+    "false_positives": 0,
+    "score": 62,
+    "turns": 2,
+    "tokens": 10538,
+    "cost_usd": 0.0019,
+    "seconds": 8.9,
+    "missed": "-",
+    "unexpected": [],
+    "report": {
+      "overall_score": 62,
+      "summary": "The dataset has 210 rows with duplicate customer records (10 extra rows by normalised email, 6 duplicate customer_ids), which would break matching in a migration. Email, phone, postcode and signup_date each have a meaningful number of malformed values, and state and status use inconsistent spellings. Lifetime value has three extreme outliers that look like placeholder or erroneous entries.",
+      "issues": [
+        {
+          "column": "email",
+          "issue_type": "duplicates",
+          "severity": "high",
+          "affected_rows": 10,
+          "example": "Rows 9 and 208, 26 and 203, 30 and 206 share the same email after normalising case and whitespace. Exact copies also share customer_id (rows 9/208, 30/206, 32/209, 93/210, 153/211 give 6 duplicate customer_ids).",
+          "suggested_fix": "Review each duplicate group, merge or retain the correct record, and remove extra rows before loading. Enforce uniqueness on normalised email and customer_id in the target CRM."
+        },
+        {
+          "column": "email",
+          "issue_type": "invalid_format",
+          "severity": "high",
+          "affected_rows": 8,
+          "example": "Row 67 'l***@' (no domain); row 39 'j***@example' (no TLD); row 131 'o***@exa mple.com' (contains space)",
+          "suggested_fix": "Correct the malformed addresses from source systems or quarantine them. Do not load them into an email-keyed system until fixed."
+        },
+        {
+          "column": "email",
+          "issue_type": "missing_values",
+          "severity": "medium",
+          "affected_rows": 10,
+          "example": "10 of 210 rows (4.8%) have a blank email",
+          "suggested_fix": "Confirm whether these customers can be contacted another way. Backfill from other sources if possible, otherwise accept as null and flag for business review."
+        },
+        {
+          "column": "phone",
+          "issue_type": "invalid_format",
+          "severity": "medium",
+          "affected_rows": 6,
+          "example": "Row 22 '18******RS', row 152 'ph*ne' (placeholder text), row 201 '99******99'",
+          "suggested_fix": "Standardise to AU mobile/landline format. Replace placeholder text with null and route invalid numbers for correction."
+        },
+        {
+          "column": "postcode",
+          "issue_type": "invalid_format",
+          "severity": "medium",
+          "affected_rows": 4,
+          "example": "Row 108 'VIC3000', row 53 '30OO' (letter O), row 40 '300', row 170 '30001'",
+          "suggested_fix": "Convert to 4-digit numeric postcodes, store as text with leading zeros preserved, and check against state where possible."
+        },
+        {
+          "column": "signup_date",
+          "issue_type": "invalid_format",
+          "severity": "medium",
+          "affected_rows": 5,
+          "example": "Row 8 '2024-02-30' and row 27 '31/02/2025' (impossible dates), row 34 'yesterday', row 125 '2025-13-01', row 58 '15-07-2025' (non-standard format)",
+          "suggested_fix": "Parse to ISO YYYY-MM-DD where valid. Set impossible or relative values to null and source the correct signup dates."
+        },
+        {
+          "column": "status",
+          "issue_type": "inconsistent_values",
+          "severity": "medium",
+          "affected_rows": 5,
+          "example": "'ACTIVE', 'active', 'active ' (trailing space) and 'INACTIVE' / 'inactive' appear alongside 'Active' and 'Inactive'",
+          "suggested_fix": "Trim whitespace and map to a controlled list of 'Active' and 'Inactive' before loading into a picklist field."
+        },
+        {
+          "column": "state",
+          "issue_type": "inconsistent_values",
+          "severity": "medium",
+          "affected_rows": 9,
+          "example": "'New South Wales' (3 rows) vs 'NSW' (38); 'Victoria' (4) and 'vic' (2) vs 'VIC' (40)",
+          "suggested_fix": "Map full state names and case variants to standard abbreviations (NSW, VIC) to match the picklist."
+        },
+        {
+          "column": "lifetime_value",
+          "issue_type": "outliers",
+          "severity": "medium",
+          "affected_rows": 3,
+          "example": "Row 71 = 250000, row 79 = 180000, row 138 = 999999, against a median of 2414.56 and an upper IQR bound of about 7165",
+          "suggested_fix": "Verify these values against billing records. They look like placeholders or keying errors. Correct or null them before migrating financial fields."
+        },
+        {
+          "column": "last_name",
+          "issue_type": "missing_values",
+          "severity": "low",
+          "affected_rows": 3,
+          "example": "3 of 210 rows (1.4%) have a blank last_name",
+          "suggested_fix": "Confirm whether the source has the surname. Accept as null if the target allows it, or flag for enrichment."
+        }
+      ]
+    },
+    "trace": [
+      {
+        "tool": "find_duplicates",
+        "input": {
+          "columns": [
+            "email"
+          ],
+          "normalise": true
+        },
+        "result_preview": "{\"columns_checked\":[\"email\"],\"normalised\":true,\"duplicate_groups\":10,\"extra_rows\":10,\"example_groups\":[[9,208],[26,203],[30,206],[32,209],[82,205]]}"
+      },
+      {
+        "tool": "find_duplicates",
+        "input": {
+          "columns": [
+            "customer_id"
+          ]
+        },
+        "result_preview": "{\"columns_checked\":[\"customer_id\"],\"normalised\":false,\"duplicate_groups\":6,\"extra_rows\":6,\"example_groups\":[[9,208],[30,206],[32,209],[93,210],[153,211]]}"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "email",
+          "format": "email"
+        },
+        "result_preview": "{\"column\":\"email\",\"format\":\"email\",\"checked_non_empty\":200,\"invalid_count\":8,\"examples\":[{\"row\":13,\"value\":\"a***@example.c\"},{\"row\":39,\"value\":\"j***@example\"},{\"row\":67,\"value\":\"l***@\"},{\"row\":84,\"val"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "phone",
+          "format": "phone_au"
+        },
+        "result_preview": "{\"column\":\"phone\",\"format\":\"phone_au\",\"checked_non_empty\":210,\"invalid_count\":6,\"examples\":[{\"row\":7,\"value\":\"04****45\"},{\"row\":22,\"value\":\"18******RS\"},{\"row\":152,\"value\":\"ph*ne\"},{\"row\":161,\"value\":"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "postcode",
+          "format": "postcode_au"
+        },
+        "result_preview": "{\"column\":\"postcode\",\"format\":\"postcode_au\",\"checked_non_empty\":210,\"invalid_count\":4,\"examples\":[{\"row\":40,\"value\":\"300\"},{\"row\":53,\"value\":\"30OO\"},{\"row\":108,\"value\":\"VIC3000\"},{\"row\":170,\"value\":\"3"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "signup_date",
+          "format": "date"
+        },
+        "result_preview": "{\"column\":\"signup_date\",\"format\":\"date\",\"checked_non_empty\":210,\"invalid_count\":5,\"examples\":[{\"row\":8,\"value\":\"2024-02-30\"},{\"row\":27,\"value\":\"31/02/2025\"},{\"row\":34,\"value\":\"yesterday\"},{\"row\":58,\"v"
+      },
+      {
+        "tool": "find_inconsistent_values",
+        "input": {
+          "column": "status"
+        },
+        "result_preview": "{\"column\":\"status\",\"distinct_values\":7,\"inconsistent_groups\":2,\"affected_rows\":5,\"groups\":[{\"canonical\":\"active\",\"variants\":[{\"value\":\"Active\",\"count\":159},{\"value\":\"ACTIVE\",\"count\":1},{\"value\":\"activ"
+      },
+      {
+        "tool": "find_inconsistent_values",
+        "input": {
+          "column": "state"
+        },
+        "result_preview": "{\"column\":\"state\",\"distinct_values\":8,\"inconsistent_groups\":2,\"affected_rows\":9,\"groups\":[{\"canonical\":\"nsw\",\"variants\":[{\"value\":\"NSW\",\"count\":38},{\"value\":\"New South Wales\",\"count\":3}]},{\"canonical\""
+      },
+      {
+        "tool": "find_outliers",
+        "input": {
+          "column": "lifetime_value"
+        },
+        "result_preview": "{\"column\":\"lifetime_value\",\"numeric_values\":210,\"non_numeric\":0,\"median\":2414.56,\"bounds\":{\"low\":-2323.9462499999995,\"high\":7165.023749999999},\"outlier_count\":3,\"examples\":[{\"row\":71,\"value\":250000},{"
+      },
+      {
+        "tool": "submit_report",
+        "input": "(final report)",
+        "result_preview": "done"
+      }
+    ]
+  },
+  {
+    "file": "messy_customers",
+    "run": 3,
+    "model": "claude-haiku-5-5",
+    "recall": 1,
+    "found": "10/10",
+    "exact_counts": "10/10",
+    "unexpected_issues": 0,
+    "false_positives": 0,
+    "score": 62,
+    "turns": 2,
+    "tokens": 10618,
+    "cost_usd": 0.002,
+    "seconds": 8.9,
+    "missed": "-",
+    "unexpected": [],
+    "report": {
+      "overall_score": 62,
+      "summary": "The dataset has 210 rows with significant duplication: 10 extra rows share an email after normalisation, and 6 customer_ids are repeated, indicating duplicate customer records that will break matching in a migration. Format problems affect invalid emails, phones, postcodes and signup dates, and status and state use inconsistent variants. Lifetime value has three implausible outliers (180,000 to 999,999) that need review before go-live.",
+      "issues": [
+        {
+          "column": "email",
+          "issue_type": "duplicates",
+          "severity": "high",
+          "affected_rows": 10,
+          "example": "Rows 9 and 208, 26 and 203 share the same email after normalising case/whitespace. Exact copies also share customer_id (e.g. rows 9/208, 30/206, 32/209 duplicate customer_id).",
+          "suggested_fix": "Review each duplicate group, merge or retain the authoritative record, and enforce uniqueness on normalised email (lowercase, trimmed) and customer_id before migration."
+        },
+        {
+          "column": "email",
+          "issue_type": "missing_values",
+          "severity": "high",
+          "affected_rows": 10,
+          "example": "10 rows (4.8%) have no email address.",
+          "suggested_fix": "Source missing emails from upstream systems or flag them; email is a key matching field in Salesforce, so decide whether these records can migrate."
+        },
+        {
+          "column": "email",
+          "issue_type": "invalid_format",
+          "severity": "high",
+          "affected_rows": 8,
+          "example": "Row 39 'j***@example' (no TLD), row 67 'l***@' (no domain), row 131 contains a space.",
+          "suggested_fix": "Correct the malformed addresses at source or quarantine them for manual review; do not load invalid emails into the CRM."
+        },
+        {
+          "column": "customer_id",
+          "issue_type": "duplicates",
+          "severity": "high",
+          "affected_rows": 6,
+          "example": "Row 93 and 210 share a customer_id; 153 and 211 likewise. Only 204 unique IDs across 210 rows.",
+          "suggested_fix": "Assign unique IDs to the duplicate records or merge them; the ID is the migration key so duplicates must be resolved first."
+        },
+        {
+          "column": "phone",
+          "issue_type": "invalid_format",
+          "severity": "medium",
+          "affected_rows": 6,
+          "example": "Row 22 '18******RS', row 152 'ph*ne' (placeholder text), row 201 '99******99'.",
+          "suggested_fix": "Replace placeholder and malformed numbers; validate against AU mobile/landline formats and standardise to E.164 format."
+        },
+        {
+          "column": "postcode",
+          "issue_type": "invalid_format",
+          "severity": "medium",
+          "affected_rows": 4,
+          "example": "Row 108 'VIC3000', row 53 '30OO' (letter O), row 40 '300', row 170 '30001'.",
+          "suggested_fix": "Correct to 4-digit AU postcodes, consistent with the state; store as text to keep leading zeros."
+        },
+        {
+          "column": "signup_date",
+          "issue_type": "invalid_format",
+          "severity": "medium",
+          "affected_rows": 5,
+          "example": "Row 8 '2024-02-30' and row 27 '31/02/2025' are impossible dates; row 34 'yesterday'; row 58 '15-07-2025'; row 125 '2025-13-01'.",
+          "suggested_fix": "Parse and correct dates to ISO YYYY-MM-DD; investigate impossible dates against source records."
+        },
+        {
+          "column": "status",
+          "issue_type": "inconsistent_values",
+          "severity": "medium",
+          "affected_rows": 5,
+          "example": "'ACTIVE', 'active', 'active ' (trailing space) for Active; 'inactive', 'INACTIVE' for Inactive.",
+          "suggested_fix": "Trim whitespace and map to a controlled picklist of 'Active' and 'Inactive' before loading."
+        },
+        {
+          "column": "state",
+          "issue_type": "inconsistent_values",
+          "severity": "medium",
+          "affected_rows": 9,
+          "example": "'New South Wales' (3 rows) vs 'NSW' (38); 'Victoria' (4) and 'vic' (2) vs 'VIC' (40).",
+          "suggested_fix": "Standardise to AU state codes (NSW, VIC, etc.) to match the rest of the column."
+        },
+        {
+          "column": "lifetime_value",
+          "issue_type": "outliers",
+          "severity": "medium",
+          "affected_rows": 3,
+          "example": "Row 71 = 250000, row 79 = 180000, row 138 = 999999; median is 2414.56 and the IQR upper bound is 7165.02.",
+          "suggested_fix": "Verify these values against finance records; they look like placeholder or test entries and should be corrected or excluded before migration."
+        },
+        {
+          "column": "last_name",
+          "issue_type": "missing_values",
+          "severity": "low",
+          "affected_rows": 3,
+          "example": "3 rows (1.4%) have no last_name.",
+          "suggested_fix": "Confirm whether the source holds the value; Salesforce requires a Last Name on Contact, so these need a value or a default."
+        }
+      ]
+    },
+    "trace": [
+      {
+        "tool": "find_duplicates",
+        "input": {
+          "columns": [
+            "email"
+          ],
+          "normalise": true
+        },
+        "result_preview": "{\"columns_checked\":[\"email\"],\"normalised\":true,\"duplicate_groups\":10,\"extra_rows\":10,\"example_groups\":[[9,208],[26,203],[30,206],[32,209],[82,205]]}"
+      },
+      {
+        "tool": "find_duplicates",
+        "input": {
+          "columns": [
+            "customer_id"
+          ]
+        },
+        "result_preview": "{\"columns_checked\":[\"customer_id\"],\"normalised\":false,\"duplicate_groups\":6,\"extra_rows\":6,\"example_groups\":[[9,208],[30,206],[32,209],[93,210],[153,211]]}"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "email",
+          "format": "email"
+        },
+        "result_preview": "{\"column\":\"email\",\"format\":\"email\",\"checked_non_empty\":200,\"invalid_count\":8,\"examples\":[{\"row\":13,\"value\":\"a***@example.c\"},{\"row\":39,\"value\":\"j***@example\"},{\"row\":67,\"value\":\"l***@\"},{\"row\":84,\"val"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "phone",
+          "format": "phone_au"
+        },
+        "result_preview": "{\"column\":\"phone\",\"format\":\"phone_au\",\"checked_non_empty\":210,\"invalid_count\":6,\"examples\":[{\"row\":7,\"value\":\"04****45\"},{\"row\":22,\"value\":\"18******RS\"},{\"row\":152,\"value\":\"ph*ne\"},{\"row\":161,\"value\":"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "postcode",
+          "format": "postcode_au"
+        },
+        "result_preview": "{\"column\":\"postcode\",\"format\":\"postcode_au\",\"checked_non_empty\":210,\"invalid_count\":4,\"examples\":[{\"row\":40,\"value\":\"300\"},{\"row\":53,\"value\":\"30OO\"},{\"row\":108,\"value\":\"VIC3000\"},{\"row\":170,\"value\":\"3"
+      },
+      {
+        "tool": "validate_format",
+        "input": {
+          "column": "signup_date",
+          "format": "date"
+        },
+        "result_preview": "{\"column\":\"signup_date\",\"format\":\"date\",\"checked_non_empty\":210,\"invalid_count\":5,\"examples\":[{\"row\":8,\"value\":\"2024-02-30\"},{\"row\":27,\"value\":\"31/02/2025\"},{\"row\":34,\"value\":\"yesterday\"},{\"row\":58,\"v"
+      },
+      {
+        "tool": "find_inconsistent_values",
+        "input": {
+          "column": "status"
+        },
+        "result_preview": "{\"column\":\"status\",\"distinct_values\":7,\"inconsistent_groups\":2,\"affected_rows\":5,\"groups\":[{\"canonical\":\"active\",\"variants\":[{\"value\":\"Active\",\"count\":159},{\"value\":\"ACTIVE\",\"count\":1},{\"value\":\"activ"
+      },
+      {
+        "tool": "find_inconsistent_values",
+        "input": {
+          "column": "state"
+        },
+        "result_preview": "{\"column\":\"state\",\"distinct_values\":8,\"inconsistent_groups\":2,\"affected_rows\":9,\"groups\":[{\"canonical\":\"nsw\",\"variants\":[{\"value\":\"NSW\",\"count\":38},{\"value\":\"New South Wales\",\"count\":3}]},{\"canonical\""
+      },
+      {
+        "tool": "find_outliers",
+        "input": {
+          "column": "lifetime_value"
+        },
+        "result_preview": "{\"column\":\"lifetime_value\",\"numeric_values\":210,\"non_numeric\":0,\"median\":2414.56,\"bounds\":{\"low\":-2323.9462499999995,\"high\":7165.023749999999},\"outlier_count\":3,\"examples\":[{\"row\":71,\"value\":250000},{"
+      },
+      {
+        "tool": "submit_report",
+        "input": "(final report)",
+        "result_preview": "done"
+      }
+    ]
+  }
+]
